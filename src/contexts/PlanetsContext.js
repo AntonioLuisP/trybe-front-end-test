@@ -1,12 +1,16 @@
 import React, { useState, useEffect, createContext } from "react";
 import api from "../services/api";
 
+//contexto para armazenar as infos dos planetas
 export const PlanetsContext = createContext({});
 
+//provedor de informações dos planetas
 export function PlanetsProvider({ children }) {
 
+	//infos dos planetas
 	const [data, setData] = useState([]);
 
+	//filtros de busca
 	const [filters, setFilters] = useState({
 		filterByName: {
 			name: ""
@@ -14,15 +18,15 @@ export function PlanetsProvider({ children }) {
 		filterByNumericValues: [
 		]
 	});
-	console.log(filters);
 
+	//busca das informações na api
 	useEffect(() => {
 		api.get("planets/")
 			.then(response => {
 				if (response.status === 200) {
 					setData(response.data.results);
 				}
-			}).catch(erro => alert(erro.message));
+			}).catch(erro => console.log(erro.message));
 	}, []);
 
 	return (

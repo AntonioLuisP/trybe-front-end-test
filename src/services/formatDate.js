@@ -1,3 +1,4 @@
+//function para exibir data formatada (dd/mm/YYYY)
 export function formatDate(timestamp, input = null) {
 	const allDate = new Date(timestamp);
 	const dia = allDate.getDate() > 10 ? allDate.getDate() : "0" + allDate.getDate();
@@ -9,7 +10,7 @@ export function formatDate(timestamp, input = null) {
 			allDate.getFullYear() > 9 ?
 				"00" + allDate.getFullYear() :
 				"000" + allDate.getFullYear();
-	if (input)
+	if (input) // caso seja um input retorna dd-mm-YYYY
 		return ano + "-" + mes + "-" + dia;
 	return dia + "/" + mes + "/" + ano;
 }

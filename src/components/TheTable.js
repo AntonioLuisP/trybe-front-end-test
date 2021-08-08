@@ -2,11 +2,10 @@ import React from "react";
 import { formatDate } from "../services/formatDate";
 import { usePlanets } from "../hooks/usePlanets";
 
-//helper function para criar a comparação entre a coluna e o valor digitado
-//recebe realiza a comparação de acordo com o valor de comparation
+//helper function para comparar coluna com valo de acordo com o valor de comparation
 function makeComparation(column, comparation, value) {
 
-	//valores vêm como string e necessitam ser convertidas
+	//valores vêm como string e precisam ser convertidos
 	const numColumn = Number(column);
 	const numValue = Number(value);
 
@@ -17,18 +16,17 @@ function makeComparation(column, comparation, value) {
 	return numColumn > numValue;
 }
 
-const TheTable = () => {
+// componente para table
+export default function TheTable() {
 
-	//pega os dados do contexto referentes a api e aos filtros
 	const [{ data }, { filters }] = usePlanets();
 
-	//retirada das informações importantes dos filtros
-	//colocados aqui para diminuir a quantidade de código e a de ações dentro do loop
-	const nameFilter = filters.filterByName.name.toLowerCase();
-	const numericFilter = filters.filterByNumericValues[filters.filterByNumericValues.length - 1];
+	//informações dos filtros colocadas fora do loop para diminuir a complexidade do código
+	const nameFilter = filters.filterByName.name.toLowerCase(); //letras minusculas para comparação ser case sensitive
+	const numericFilter = filters.filterByNumericValues[filters.filterByNumericValues.length - 1]; //ultimo do array
 	const columnName = numericFilter ? numericFilter.column : "";
 	const comparation = numericFilter ? numericFilter.comparison : "";
-	const valueToCompare = numericFilter ? Number(numericFilter.value) : 0;
+	const valueToCompare = numericFilter ? Number(numericFilter.value) : 0; //valor vem como string e precisa ser convertido
 
 	return (
 		<table>
@@ -52,12 +50,10 @@ const TheTable = () => {
 			<tbody>
 				{
 					data.map((planet, id) => {
-						const planetName = planet.name.toLowerCase();
-						//aplica o filtro de nome e numérico
-						//no numérico verifica se não existe filtro ou
-						//ou qual deve ser aplicado pela função 
+						const planetName = planet.name.toLowerCase(); //letras minusculas para comparação ser case sensitive
+						//aplica os filtros (no numérico verifica se não existe ou qual deve ser aplicado)
 						if (planetName.includes(nameFilter) &&
-                            (!numericFilter || makeComparation(planet[columnName], comparation, valueToCompare))
+							(!numericFilter || makeComparation(planet[columnName], comparation, valueToCompare))
 						) {
 							return (
 								<tr key={id}>
@@ -83,13 +79,11 @@ const TheTable = () => {
 								</tr>
 							);
 						} else {
-							return (<></>);
+							return (<></>); //fragmento que vai ser ignorado na tela
 						}
 					})
 				}
 			</tbody>
 		</table >
 	);
-};
-
-export default TheTable;
+}

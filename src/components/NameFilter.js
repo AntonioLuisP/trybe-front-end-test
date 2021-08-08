@@ -1,10 +1,10 @@
 import React from "react";
 import { usePlanets } from "../hooks/usePlanets";
 
-const NameFilter = () => {
+//componente para fitrar pelo nome
+export default function NameFilter() {
 
 	const [, { filters, setFilters }] = usePlanets();
-
 
 	return (
 		<>
@@ -18,5 +18,4 @@ const NameFilter = () => {
 			/>
 		</>
 	);
-};
-export default NameFilter;
+}

@@ -2,7 +2,8 @@ import React from "react";
 import NameFilter from "./NameFilter";
 import NumericFilter from "./NumericFilter";
 
-const Filter = () => {
+//componente com todos os filtros
+export default function TheFilter() {
 
 	return (
 		<>
@@ -10,6 +11,4 @@ const Filter = () => {
 			<NumericFilter />
 		</>
 	);
-};
-
-export default Filter;
+}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { usePlanets } from "../hooks/usePlanets";
 
-const NumericFilter = () => {
+// componente para filtrar numericamente
+export default function NumericFilter() {
 
 	const [, { setFilters }] = usePlanets();
 
@@ -9,6 +10,7 @@ const NumericFilter = () => {
 	const [comparison, setComparison] = useState("maior");
 	const [value, setValue] = useState("");
 
+	//function para adicionar o filtro
 	function execFilter(e) {
 		e.preventDefault();
 		setFilters(filters => {
@@ -41,5 +43,4 @@ const NumericFilter = () => {
 			<button type='submit'>Executar Filtragem</button>
 		</form>
 	);
-};
-export default NumericFilter;
+}
