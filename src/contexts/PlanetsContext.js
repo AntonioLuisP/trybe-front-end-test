@@ -16,7 +16,11 @@ export function PlanetsProvider({ children }) {
 			name: ""
 		},
 		filterByNumericValues: [
-		]
+		],
+		order:{
+			column: "name",
+			sort: "ASC",
+		}
 	});
 
 	//busca das informações na api

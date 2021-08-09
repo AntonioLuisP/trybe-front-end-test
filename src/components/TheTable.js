@@ -22,15 +22,19 @@ export default function TheTable() {
 
 	const [{ data }, { filters }] = usePlanets();
 
-	//informações dos filtros colocadas fora do loop para diminuir a complexidade do código
+	//informações dos filtros colocadas fora dos loops para diminuir a complexidade do código
 	const nameFilter = filters.filterByName.name.toLowerCase(); //letras minusculas para comparação ser case sensitive
+
 	const numericFilter = filters.filterByNumericValues[filters.filterByNumericValues.length - 1]; //ultimo do array
 	const columnName = numericFilter ? numericFilter.column : "";
 	const comparation = numericFilter ? numericFilter.comparison : "";
 	const valueToCompare = numericFilter ? Number(numericFilter.value) : 0; //valor vem como string e precisa ser convertido
 
+	const sortColumn = filters.order.column;
+	const sortMethod = filters.order.sort;
+
 	//array com os devidos planetas filtrados
-	const planets = data.filter(planet => {
+	const filterPlanets = data.filter(planet => {
 		const planetName = planet.name.toLowerCase(); //letras minusculas para comparação ser case sensitive
 		//aplica os filtros (no numérico verifica se não existe ou qual deve ser aplicado)
 		if (planetName.includes(nameFilter) &&
@@ -39,6 +43,18 @@ export default function TheTable() {
 			return true;
 		}
 		return false;
+	});
+
+	//array de planetas ordenados
+	const planets = filterPlanets.sort((actual, next) => {
+		const actualValue = actual[sortColumn];
+		const nextValue = next[sortColumn];
+
+		//ordena para textos com numeros e case sensitive verificando se é ASC ou DESC
+		if (sortMethod === "ASC") {
+			return actualValue.localeCompare(nextValue, undefined, { numeric: true, sensitive: "base" });
+		}
+		return nextValue.localeCompare(actualValue, undefined, { numeric: true, sensitive: "base" });
 	});
 
 	return (

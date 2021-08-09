@@ -9,6 +9,8 @@ export default function NumericFilter() {
 
 	const [, { filters, setFilters }] = usePlanets();
 
+	const numFilters = filters.filterByNumericValues;
+
 	const [column, setColumn] = useState("");
 	const [comparison, setComparison] = useState("");
 	const [value, setValue] = useState(0);
@@ -32,7 +34,7 @@ export default function NumericFilter() {
 			text: "Água da Superfície",
 		},
 	].filter(column => { //filtra quando existe alguma correspondencia da columnDisplay no filtro numerico
-		if (filters.filterByNumericValues.some(filter => filter.column === column.field)) {
+		if (numFilters.some(filter => filter.column === column.field)) {
 			return false;
 		}
 		return true;
@@ -60,14 +62,14 @@ export default function NumericFilter() {
 
 	return (
 		<>
-			<DropdownButton title="Coluna">
+			<DropdownButton variant="info" title="Coluna">
 				{
 					displayColumns.map((column, id) => (
 						<Dropdown.Item key={id} onClick={() => setColumn(column.field)}>{column.text}</Dropdown.Item>
 					))
 				}
 			</DropdownButton>
-			<DropdownButton title="Comparação">
+			<DropdownButton variant="info" title="Comparação">
 				<Dropdown.Item onClick={() => setComparison("maior")}>Maior que</Dropdown.Item>
 				<Dropdown.Item onClick={() => setComparison("menor")}>Menor que</Dropdown.Item>
 				<Dropdown.Item onClick={() => setComparison("igual")}>Igual a</Dropdown.Item>
@@ -80,7 +82,7 @@ export default function NumericFilter() {
 			/>
 			<Button
 				disabled={displayColumns.length === 0 ? true : false}
-				variant="primary"
+				variant="success"
 				onClick={execFilter}
 			>
 				Filtrar

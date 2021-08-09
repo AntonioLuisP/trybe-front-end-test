@@ -1,6 +1,7 @@
 import React from "react";
 import NameFilter from "./NameFilter";
 import NumericFilter from "./NumericFilter";
+import OrderFilter from "./OrderFilter";
 
 //componente com todos os filtros
 export default function TheFilter() {
@@ -9,6 +10,7 @@ export default function TheFilter() {
 		<div className="btn-group">
 			<NameFilter />
 			<NumericFilter />
+			<OrderFilter />
 		</div>
 	);
 }
