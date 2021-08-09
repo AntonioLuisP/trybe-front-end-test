@@ -7,15 +7,44 @@ import { usePlanets } from "../hooks/usePlanets";
 // componente para filtrar numericamente
 export default function NumericFilter() {
 
-	const [, { setFilters }] = usePlanets();
+	const [, { filters, setFilters }] = usePlanets();
 
-	const [column, setColumn] = useState("population");
-	const [comparison, setComparison] = useState("maior");
-	const [value, setValue] = useState("");
+	const [column, setColumn] = useState("");
+	const [comparison, setComparison] = useState("");
+	const [value, setValue] = useState(0);
+
+	//array de colunas que são exibidas no primeiro dropdown
+	const displayColumns = [
+		{
+			field: "population",
+			text: "População",
+		},
+		{
+			field: "orbital_period",
+			text: "Periodo de Órbita",
+		},
+		{
+			field: "diameter",
+			text: "Diâmetro",
+		},
+		{
+			field: "surface_water",
+			text: "Água da Superfície",
+		},
+	].filter(column => { //filtra quando existe alguma correspondencia da columnDisplay no filtro numerico
+		if (filters.filterByNumericValues.some(filter => filter.column === column.field)) {
+			return false;
+		}
+		return true;
+	});
 
 	//function para adicionar o filtro
-	function execFilter(e) {
-		e.preventDefault();
+	function execFilter() {
+		if (column.trim() === "" || comparison.trim() === "") {
+			alert("Escolha as opções de filtro");
+			return;
+		}
+
 		setFilters(filters => {
 			return {
 				...filters, filterByNumericValues: [
@@ -32,18 +61,30 @@ export default function NumericFilter() {
 	return (
 		<>
 			<DropdownButton title="Coluna">
-				<Dropdown.Item onClick={() => setColumn("population")}>População</Dropdown.Item>
-				<Dropdown.Item onClick={() => setColumn("orbital_period")}>Periodo de Órbita</Dropdown.Item>
-				<Dropdown.Item onClick={() => setColumn("diameter")}>Diâmetro</Dropdown.Item>
-				<Dropdown.Item onClick={() => setColumn("surface_water")}>Água da Superfície</Dropdown.Item>
+				{
+					displayColumns.map((column, id) => (
+						<Dropdown.Item key={id} onClick={() => setColumn(column.field)}>{column.text}</Dropdown.Item>
+					))
+				}
 			</DropdownButton>
 			<DropdownButton title="Comparação">
 				<Dropdown.Item onClick={() => setComparison("maior")}>Maior que</Dropdown.Item>
 				<Dropdown.Item onClick={() => setComparison("menor")}>Menor que</Dropdown.Item>
 				<Dropdown.Item onClick={() => setComparison("igual")}>Igual a</Dropdown.Item>
 			</DropdownButton>
-			<input className="form-control" type="number" value={value} onChange={e => setValue(e.target.value)} />
-			<Button type="button" variant="primary" onClick={execFilter}>Filtrar</Button>
+			<input
+				className="form-control"
+				type="number"
+				value={value}
+				onChange={e => setValue(e.target.value)}
+			/>
+			<Button
+				disabled={displayColumns.length === 0 ? true : false}
+				variant="primary"
+				onClick={execFilter}
+			>
+				Filtrar
+			</Button>
 		</>
 	);
 }
