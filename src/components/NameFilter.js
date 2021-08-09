@@ -9,6 +9,7 @@ export default function NameFilter() {
 	return (
 		<>
 			<input
+				className="form-control"
 				type="text"
 				placeholder="Nome do Planeta"
 				value={filters.filterByName.name}

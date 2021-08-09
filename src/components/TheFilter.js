@@ -6,9 +6,9 @@ import NumericFilter from "./NumericFilter";
 export default function TheFilter() {
 
 	return (
-		<>
+		<div className="btn-group">
 			<NameFilter />
 			<NumericFilter />
-		</>
+		</div>
 	);
 }
