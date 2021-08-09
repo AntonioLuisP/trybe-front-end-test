@@ -1,5 +1,4 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
 import { formatDate } from "../services/formatDate";
 import { usePlanets } from "../hooks/usePlanets";
 
@@ -18,7 +17,7 @@ function makeComparation(column, comparation, value) {
 }
 
 // componente para table
-export default function TheTable() {
+export default function Table() {
 
 	const [{ data }, { filters }] = usePlanets();
 
@@ -58,7 +57,7 @@ export default function TheTable() {
 	});
 
 	return (
-		<Table striped bordered hover>
+		<table className="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
 					<th>Nome</th>
@@ -105,6 +104,6 @@ export default function TheTable() {
 					})
 				}
 			</tbody>
-		</Table >
+		</table >
 	);
 }

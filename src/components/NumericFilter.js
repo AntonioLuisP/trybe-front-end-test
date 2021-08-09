@@ -42,11 +42,6 @@ export default function NumericFilter() {
 
 	//function para adicionar o filtro
 	function execFilter() {
-		if (column.trim() === "" || comparison.trim() === "") {
-			alert("Escolha as opções de filtro");
-			return;
-		}
-
 		setFilters(filters => {
 			return {
 				...filters, filterByNumericValues: [
@@ -81,7 +76,7 @@ export default function NumericFilter() {
 				onChange={e => setValue(e.target.value)}
 			/>
 			<Button
-				disabled={displayColumns.length === 0 ? true : false}
+				disabled={column.trim() === "" || comparison.trim() === ""}
 				variant="success"
 				onClick={execFilter}
 			>

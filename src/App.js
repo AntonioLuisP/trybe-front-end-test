@@ -1,13 +1,13 @@
 import React from "react";
 import TheFilter from "./components/TheFilter";
-import TheTable from "./components/TheTable";
+import Table from "./components/Table";
 import { PlanetsProvider } from "./contexts/PlanetsContext";
 
 export default function App() {
 	return (
 		<PlanetsProvider>
 			<TheFilter />
-			<TheTable />
+			<Table />
 		</PlanetsProvider>
 	);
 }
