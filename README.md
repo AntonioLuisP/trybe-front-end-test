@@ -21,7 +21,7 @@ Also that, has a User with this fields:
 + birth
 + active
 
-## Tecnologias Utilizadas Used:
+## Tecnologias Utilizadas:
 
 <table>
   <tr>
