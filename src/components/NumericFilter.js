@@ -69,6 +69,9 @@ export default function NumericFilter() {
 				]
 			};
 		});
+		setColumn("");
+		setComparison("");
+		setValue(0);
 	}
 
 	return (
@@ -80,21 +83,13 @@ export default function NumericFilter() {
 					))
 				}
 			</DropdownButton>
-			<Button
-				variant="danger"
-				onClick={deleteFilter} >
-				X
-			</Button>
+			<Button variant="danger" onClick={deleteFilter}> X </Button>
 			<DropdownButton variant="info" title="Comparação">
 				<Dropdown.Item onClick={() => setComparison("maior que")}>Maior que</Dropdown.Item>
 				<Dropdown.Item onClick={() => setComparison("menor que")}>Menor que</Dropdown.Item>
 				<Dropdown.Item onClick={() => setComparison("igual a")}>Igual a</Dropdown.Item>
 			</DropdownButton>
-			<Button
-				variant="danger"
-				onClick={deleteFilter} >
-				X
-			</Button>
+			<Button variant="danger" onClick={deleteFilter}> X </Button>
 			<input
 				className="form-control"
 				type="number"
@@ -106,11 +101,7 @@ export default function NumericFilter() {
 					}
 				}}
 			/>
-			<Button
-				variant="danger"
-				onClick={deleteFilter} >
-				X
-			</Button>
+			<Button variant="danger" onClick={deleteFilter}> X </Button>
 			<Button
 				disabled={column.trim() === "" || comparison.trim() === ""}
 				variant="success"
