@@ -12,14 +12,6 @@
 + Filtros por nome
 + Filtros numéricos
 + Ordenação da lista
-  
-Also that, has a User with this fields:
-
-+ name
-+ email
-+ cpf
-+ birth
-+ active
 
 ## Tecnologias Utilizadas:
  <table>
