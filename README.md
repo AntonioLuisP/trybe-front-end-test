@@ -1,4 +1,4 @@
-
+![Screenshot_1](https://user-images.githubusercontent.com/23555222/128939361-07dcbcf7-4a82-4b19-a00e-6da2aa8a23c6.png)
 # Star Wars Database
 
 > Status: Developing
@@ -22,8 +22,7 @@ Also that, has a User with this fields:
 + active
 
 ## Tecnologias Utilizadas:
-
-<table>
+ <table>
   <tr>
     <td>React</td>
     <td>Axios</td>
