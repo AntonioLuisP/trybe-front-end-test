@@ -11,7 +11,7 @@
 + Filtros numéricos
 + Ordenação da lista
 
-<a href="https://drive.google.com/file/d/1ofsxQ_aOPZ3Sr_nB934t3ytNccP7Ry_d/view?usp=sharing">Documento explicativo das funcionalidades do sistema </a>
+<a href="https://drive.google.com/file/d/1ofsxQ_aOPZ3Sr_nB934t3ytNccP7Ry_d/view?usp=sharing" target="_blank">Documento explicativo das funcionalidades do sistema </a>
 
 ## Tecnologias Utilizadas:
 
