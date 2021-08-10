@@ -38,8 +38,8 @@ export default function Table() {
 
 	// array com os devidos planetas filtrados numericamente
 	const planetsNumericFiltred = planetsNameFiltred.filter(planet => {
-		//aplica os filtros (no numérico verifica se não existe ou qual deve ser aplicado)
 		if (numericFilters.length > 0) {
+			//aplica todos filtros numéricos verificando como deve ser aplicado
 			for (let index = 0; index < numericFilters.length; index++) {
 				const numericFilter = numericFilters[index];
 				const columnName = numericFilter.column;
