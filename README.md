@@ -1,4 +1,3 @@
-![Screenshot_1](https://user-images.githubusercontent.com/23555222/128939361-07dcbcf7-4a82-4b19-a00e-6da2aa8a23c6.png)
 # Star Wars Database
 
 > Status: Developing
@@ -22,3 +21,5 @@
 
 1) npm install (ao baixar o projeto do git)
 2) npm start
+
+![Screenshot_1](https://user-images.githubusercontent.com/23555222/128939361-07dcbcf7-4a82-4b19-a00e-6da2aa8a23c6.png)
