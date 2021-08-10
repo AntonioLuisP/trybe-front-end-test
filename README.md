@@ -11,6 +11,8 @@
 + Filtros numéricos
 + Ordenação da lista
 
+<a href="https://drive.google.com/file/d/1ofsxQ_aOPZ3Sr_nB934t3ytNccP7Ry_d/view?usp=sharing">Documento explicativo das funcionalidades do sistema </a>
+
 ## Tecnologias Utilizadas:
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="react" width="40" height="40" style="max-width:100%;"></img>
