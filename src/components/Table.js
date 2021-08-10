@@ -23,29 +23,40 @@ export default function Table() {
 
 	//informações dos filtros colocadas fora dos loops para diminuir a complexidade do código
 	const nameFilter = filters.filterByName.name.toLowerCase(); //letras minusculas para comparação ser case sensitive
-
-	const numericFilter = filters.filterByNumericValues[filters.filterByNumericValues.length - 1]; //ultimo do array
-	const columnName = numericFilter ? numericFilter.column : "";
-	const comparation = numericFilter ? numericFilter.comparison : "";
-	const valueToCompare = numericFilter ? Number(numericFilter.value) : 0; //valor vem como string e precisa ser convertido
-
+	const numericFilters = filters.filterByNumericValues;
 	const sortColumn = filters.order.column;
 	const sortMethod = filters.order.sort;
 
-	//array com os devidos planetas filtrados
-	const filterPlanets = data.filter(planet => {
+	//array com os devidos planetas filtrados pelo nome
+	const planetsNameFiltred = data.filter(planet => {
 		const planetName = planet.name.toLowerCase(); //letras minusculas para comparação ser case sensitive
-		//aplica os filtros (no numérico verifica se não existe ou qual deve ser aplicado)
-		if (planetName.includes(nameFilter) &&
-			(!numericFilter || makeComparation(planet[columnName], comparation, valueToCompare))
-		) {
-			return true;
-		}
+
+		//verifica se o planeta contém o nome escrito no input
+		if (planetName.includes(nameFilter)) return true;
 		return false;
 	});
 
+	// array com os devidos planetas filtrados numericamente
+	const planetsNumericFiltred = planetsNameFiltred.filter(planet => {
+		//aplica os filtros (no numérico verifica se não existe ou qual deve ser aplicado)
+		if (numericFilters.length > 0) {
+			for (let index = 0; index < numericFilters.length; index++) {
+				const numericFilter = numericFilters[index];
+				const columnName = numericFilter.column;
+				const comparation = numericFilter.comparison;
+				const valueToCompare = Number(numericFilter.value); //valor vem como string e precisa ser convertido
+				if (!makeComparation(planet[columnName], comparation, valueToCompare)) {
+					return false;
+				}
+			}
+			return true;
+		} else {
+			return true;
+		}
+	});
+
 	//array de planetas ordenados
-	const planets = filterPlanets.sort((actual, next) => {
+	const planets = planetsNumericFiltred.sort((actual, next) => {
 		const actualValue = actual[sortColumn];
 		const nextValue = next[sortColumn];
 

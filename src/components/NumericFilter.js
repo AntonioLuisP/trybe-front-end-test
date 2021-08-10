@@ -46,7 +46,12 @@ export default function NumericFilter() {
 
 	//apaga filtro
 	function deleteFilter() {
-		console.log("apagou");
+		setFilters(filters => {
+			return {
+				...filters, filterByNumericValues: []
+			};
+		});
+		setValue(0);
 	}
 
 	//function para adicionar o filtro
@@ -101,11 +106,7 @@ export default function NumericFilter() {
 			/>
 			<Button
 				variant="danger"
-				onClick={() => setFilters(filters => {
-					return {
-						...filters, filterByNumericValues: []
-					};
-				})} >
+				onClick={deleteFilter} >
 				X
 			</Button>
 			<Button
