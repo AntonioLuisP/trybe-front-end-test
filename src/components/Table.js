@@ -98,8 +98,7 @@ export default function Table() {
 											const filmId = film.split("/")[5];
 											return (
 												<React.Fragment key={filmId} >
-													<a href={film} target='_blank' rel="noreferrer">{"Filme: " + filmId}</a>
-													<br />
+													<a href={film} target='_blank' rel="noreferrer">{"Filme: " + filmId}</a>{" "}
 												</React.Fragment>
 											);
 										})

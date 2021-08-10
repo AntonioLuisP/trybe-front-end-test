@@ -51,6 +51,8 @@ export default function NumericFilter() {
 				...filters, filterByNumericValues: []
 			};
 		});
+		setColumn("");
+		setComparison("");
 		setValue(0);
 	}
 
@@ -62,7 +64,7 @@ export default function NumericFilter() {
 					...filters.filterByNumericValues, {
 						column: column,
 						comparison: comparison,
-						value: value,
+						value: value === "" ? 0 : value,
 					}
 				]
 			};
