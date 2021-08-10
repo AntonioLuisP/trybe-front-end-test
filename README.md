@@ -5,7 +5,6 @@
 
 ### Aplicativo React que recebe que tabela a lista com filtros uma lista com filtros de planetas do universo StarWars provenientes de uma API externa utilizando Context API e Hooks.
 
-
 ## Funcionalidades
 
 + Lista dos planetas do universo StarWars 
@@ -14,15 +13,9 @@
 + Ordenação da lista
 
 ## Tecnologias Utilizadas:
- <table>
-  <tr>
-    <td>React</td>
-    <td>Axios</td>
-    <td>Context API</td>
-    <td>Hooks</td>
-    <td>Bootstrap</td>
-  </tr>
-</table>
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="react" width="40" height="40" style="max-width:100%;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg" alt="bootstrap" width="40" height="40" style="max-width:100%;" />
 
 ## Como colocar em funcionamento
 ### Execute na pasta do projeto os comandos
