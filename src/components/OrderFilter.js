@@ -79,7 +79,7 @@ export default function OrderFilter() {
 				}
 			</DropdownButton>
 			<Form.Check
-				type="checkbox"
+				type="radio"
 				label="ASC"
 				checked={sortMethod === "ASC"}
 				onChange={() => setFilters(filters => {
@@ -87,7 +87,7 @@ export default function OrderFilter() {
 				})}
 			/>
 			<Form.Check
-				type="checkbox"
+				type="radio"
 				label="DESC"
 				checked={sortMethod === "DESC"}
 				onChange={() => setFilters(filters => {

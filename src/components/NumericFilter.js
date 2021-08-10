@@ -30,6 +30,10 @@ export default function NumericFilter() {
 			text: "Diâmetro",
 		},
 		{
+			field: "rotation_period",
+			text: "Periodo de Rotação",
+		},
+		{
 			field: "surface_water",
 			text: "Água da Superfície",
 		},
@@ -39,6 +43,11 @@ export default function NumericFilter() {
 		}
 		return true;
 	});
+
+	//apaga filtro
+	function deleteFilter() {
+		console.log("apagou");
+	}
 
 	//function para adicionar o filtro
 	function execFilter() {
@@ -64,17 +73,41 @@ export default function NumericFilter() {
 					))
 				}
 			</DropdownButton>
+			<Button
+				variant="danger"
+				onClick={deleteFilter} >
+				X
+			</Button>
 			<DropdownButton variant="info" title="Comparação">
-				<Dropdown.Item onClick={() => setComparison("maior")}>Maior que</Dropdown.Item>
-				<Dropdown.Item onClick={() => setComparison("menor")}>Menor que</Dropdown.Item>
-				<Dropdown.Item onClick={() => setComparison("igual")}>Igual a</Dropdown.Item>
+				<Dropdown.Item onClick={() => setComparison("maior que")}>Maior que</Dropdown.Item>
+				<Dropdown.Item onClick={() => setComparison("menor que")}>Menor que</Dropdown.Item>
+				<Dropdown.Item onClick={() => setComparison("igual a")}>Igual a</Dropdown.Item>
 			</DropdownButton>
+			<Button
+				variant="danger"
+				onClick={deleteFilter} >
+				X
+			</Button>
 			<input
 				className="form-control"
 				type="number"
 				value={value}
 				onChange={e => setValue(e.target.value)}
+				onKeyPress={event => {
+					if (!/[0-9]/.test(event.key)) {
+						event.preventDefault();
+					}
+				}}
 			/>
+			<Button
+				variant="danger"
+				onClick={() => setFilters(filters => {
+					return {
+						...filters, filterByNumericValues: []
+					};
+				})} >
+				X
+			</Button>
 			<Button
 				disabled={column.trim() === "" || comparison.trim() === ""}
 				variant="success"

@@ -17,7 +17,7 @@ export function PlanetsProvider({ children }) {
 		},
 		filterByNumericValues: [
 		],
-		order:{
+		order: {
 			column: "name",
 			sort: "ASC",
 		}

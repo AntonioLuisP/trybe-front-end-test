@@ -9,9 +9,9 @@ function makeComparation(column, comparation, value) {
 	const numColumn = Number(column);
 	const numValue = Number(value);
 
-	if (comparation === "maior") return numColumn > numValue;
-	if (comparation === "menor") return numColumn < numValue;
-	if (comparation === "igual") return numColumn === numValue;
+	if (comparation === "maior que") return numColumn > numValue;
+	if (comparation === "menor que") return numColumn < numValue;
+	if (comparation === "igual a") return numColumn === numValue;
 
 	return numColumn > numValue;
 }
@@ -83,9 +83,15 @@ export default function Table() {
 								<td> {planet.name}</td>
 								<td>
 									{
-										planet.films.map((film, id) => (
-											<p key={id}>{film}</p>
-										))
+										planet.films.map(film => {
+											const filmId = film.split("/")[5];
+											return (
+												<React.Fragment key={filmId} >
+													<a href={film} target='_blank' rel="noreferrer">{"Filme: " + filmId}</a>
+													<br />
+												</React.Fragment>
+											);
+										})
 									}
 								</td>
 								<td> {planet.climate}</td>
