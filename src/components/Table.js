@@ -88,36 +88,34 @@ export default function Table() {
 			</thead>
 			<tbody>
 				{
-					planets.map((planet, id) => {
-						return (
-							<tr key={id}>
-								<td> {planet.name}</td>
-								<td>
-									{
-										planet.films.map(film => {
-											const filmId = film.split("/")[5];
-											return (
-												<React.Fragment key={filmId} >
-													<a href={film} target='_blank' rel="noreferrer">{"Filme: " + filmId}</a>{" "}
-												</React.Fragment>
-											);
-										})
-									}
-								</td>
-								<td> {planet.climate}</td>
-								<td> {planet.diameter}</td>
-								<td> {planet.gravity}</td>
-								<td> {planet.population}</td>
-								<td> {planet.surface_water}</td>
-								<td> {planet.terrain}</td>
-								<td> {planet.rotation_period}</td>
-								<td> {planet.orbital_period}</td>
-								<td> {formatDate(planet.created)}</td>
-								<td> {formatDate(planet.edited)}</td>
-								<td><a href={planet.url}>GO</a> </td>
-							</tr>
-						);
-					})
+					planets.map((planet, id) => (
+						<tr key={id}>
+							<td> {planet.name}</td>
+							<td>
+								{
+									planet.films.map(film => {
+										const filmId = film.split("/")[5];
+										return (
+											<React.Fragment key={filmId} >
+												<a href={film} target='_blank' rel="noreferrer">{"Filme: " + filmId}</a>{" "}
+											</React.Fragment>
+										);
+									})
+								}
+							</td>
+							<td> {planet.climate}</td>
+							<td> {planet.diameter}</td>
+							<td> {planet.gravity}</td>
+							<td> {planet.population}</td>
+							<td> {planet.surface_water}</td>
+							<td> {planet.terrain}</td>
+							<td> {planet.rotation_period}</td>
+							<td> {planet.orbital_period}</td>
+							<td> {formatDate(planet.created)}</td>
+							<td> {formatDate(planet.edited)}</td>
+							<td><a href={planet.url}>GO</a> </td>
+						</tr>
+					))
 				}
 			</tbody>
 		</table >
